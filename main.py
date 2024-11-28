@@ -193,7 +193,7 @@ async def main():
     tokens = load_tokens_from_file(TOKEN_FILE)
 
     while True:
-        with open('proxies.txt', 'r') as file:
+        with open('proxy.txt', 'r') as file:
             all_proxies = file.read().splitlines()
                 
         for token in tokens:
