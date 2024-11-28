@@ -4,24 +4,10 @@ import time
 import requests
 import uuid
 from loguru import logger
-from colorama import Fore, Style, init
-import sys
-import logging
-logging.disable(logging.ERROR)
+from colorama import Fore, Style
 from utils.banner import banner
 from utils.config import DOMAIN_API
 
-# Initialize colorama
-init(autoreset=True)
-
-# Customize loguru to use color for different log levels
-logger.remove()
-logger.add(sys.stdout, format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{message}</level>", colorize=True)
-logger.level("INFO", color=f"{Fore.GREEN}")
-logger.level("DEBUG", color=f"{Fore.CYAN}")
-logger.level("WARNING", color=f"{Fore.YELLOW}")
-logger.level("ERROR", color=f"{Fore.RED}")
-logger.level("CRITICAL", color=f"{Style.BRIGHT}{Fore.RED}")
 
 def show_copyright():
     print(Fore.MAGENTA + Style.BRIGHT + banner + Style.RESET_ALL)
