@@ -193,13 +193,8 @@ async def main():
     tokens = load_tokens_from_file(TOKEN_FILE)
 
     while True:
-        r = requests.get("https://api.proxyscrape.com/v4/free-proxy-list/get?request=display_proxies&proxy_format=protocolipport&format=text", stream=True)
-        if r.status_code == 200:
-            with open('proxies.txt', 'wb') as f:
-                for chunk in r:
-                    f.write(chunk)
-            with open('proxies.txt', 'r') as file:
-                all_proxies = file.read().splitlines()
+        with open('proxies.txt', 'r') as file:
+            all_proxies = file.read().splitlines()
                 
         for token in tokens:
             tasks = {asyncio.create_task(render_profile_info(proxy, token)): proxy for proxy in all_proxies}
